@@ -6,8 +6,9 @@ class DirectorsController extends Controller {
 
 
 // INDEX ACTORS
-    public function index() {
-
+    public function index($ville = 'Strasbourg') {
+        dump($ville);
+        return view('Pages/Directors/index');
     }
 
 // CREATE DIRECTORS

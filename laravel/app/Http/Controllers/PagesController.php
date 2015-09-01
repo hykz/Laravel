@@ -25,4 +25,12 @@ class PagesController extends Controller {
     public function faq() {
         return view('Pages/faq');
     }
+
+    public function index() {
+        return view('welcome');
+    }
+
+    public function concept() {
+        return view('Pages/concept');
+    }
 }

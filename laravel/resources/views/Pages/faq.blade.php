@@ -1,17 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>FAQ</title>
+@extends('layout')
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-</head>
-<body>
-<div class="container">
-    <div class="content">
-        <div class="title">Gutten Tag mein freund !</div>
-    </div>
+@section('title')
+FAQ
+@endsection
+
+@section('subtitle')
+FAQ
+@endsection
 
 
-</div>
-</body>
-</html>
+@section('content')
+@endsection
+
+
+@section('breadscrumb')
+<ul class="breadcrumb breadcrumb-page">
+    <div class="breadcrumb-label text-light-gray">You are here: </div>
+    <li><a href="#">FAQ</a></li>
+
+</ul>
+@endsection

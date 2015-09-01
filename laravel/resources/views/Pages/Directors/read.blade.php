@@ -1,17 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Read Directors</title>
+@extends('layout')
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-</head>
-<body>
-<div class="container">
-    <div class="content">
-        <div class="title">Read Directors</div>
-    </div>
+@section('title')
+Read Directors
+@endsection
+
+@section('subtitle')
+Read Directors
+@endsection
 
 
-</div>
-</body>
-</html>
+@section('content')
+@endsection
+
+@section('breadscrumb')
+<ul class="breadcrumb breadcrumb-page">
+    <div class="breadcrumb-label text-light-gray">You are here: </div>
+    <li><a href="#">Directors</a></li>
+    <li class="active"><a href="#">Read</a></li>
+</ul>
+@endsection

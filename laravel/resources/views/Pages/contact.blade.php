@@ -1,22 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Page de Contact</title>
+@extends('layout')
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-</head>
-<body>
-<div class="container">
-    <div class="content">
-        <div class="title">Gutten Tag mein freund !</div>
-    </div>
+@section('title')
+Contact
+@endsection
 
-    <form>
-        <label for="sujet">Sujet</label><input id="sujet" type="text">
-        <label for="email">Email</label><input id="email" type="email">
-        <label for="msg">Message</label><textarea id="msg"></textarea>
-        <button type="submit">Envoyer le message</button>
-    </form>
-</div>
-</body>
-</html>
+@section('subtitle')
+Contact
+@endsection
+
+
+@section('content')
+@endsection
+
+
+@section('breadscrumb')
+<ul class="breadcrumb breadcrumb-page">
+    <div class="breadcrumb-label text-light-gray">You are here: </div>
+    <li><a href="#">Contact</a></li>
+
+</ul>
+@endsection

@@ -1,17 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create Movies</title>
+@extends('layout')
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-</head>
-<body>
-<div class="container">
-    <div class="content">
-        <div class="title">Create Movies</div>
-    </div>
+@section('title')
+Create Movies
+@endsection
+
+@section('subtitle')
+Create Movies
+@endsection
 
 
-</div>
-</body>
-</html>
+@section('content')
+@endsection
+
+
+@section('breadscrumb')
+<ul class="breadcrumb breadcrumb-page">
+    <div class="breadcrumb-label text-light-gray">You are here: </div>
+    <li><a href="#">Movies</a></li>
+    <li class="active"><a href="#">Create</a></li>
+</ul>
+@endsection

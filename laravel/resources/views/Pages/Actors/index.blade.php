@@ -1,59 +1,25 @@
-<html>
-<body>
+@extends('layout')
 
-<h1> Page Acteurs Index</h1>
+@section('title')
+Index Actors
+@endsection
 
-<h3>{{$title}}</h3>
+@section('subtitle')
+Index Actors
+@endsection
 
-<ul>
-    @foreach($noms as $nom)
-        <li>{{$nom}}</li>
-    @endforeach
+
+@section('content')
+
+@foreach($actors as $actor)
+<p>{{ $actor->firstname }}</p>
+@endforeach
+@endsection
+
+@section('breadscrumb')
+<ul class="breadcrumb breadcrumb-page">
+    <div class="breadcrumb-label text-light-gray">You are here: </div>
+    <li><a href="#">Actors</a></li>
+    <li class="active"><a href="#">Index</a></li>
 </ul>
-
-<ul>
-    @foreach($ages as $age)
-    <li>{{$age}}</li>
-    @endforeach
-</ul>
-
-<ul>
-    @foreach($acteurs as $act)
-    <li>{{ $act['nom'].' '.$act['prenom'].' '.$act['age']}}</li>
-    @endforeach
-</ul>
-
-
-<ul>
-    @foreach($localite as $ville => $acteurs)
-    <li>{{$ville}}</li>
-    <ul>
-        @foreach($acteurs as $acteur)
-            {{ $acteur }}
-        @endforeach
-    </ul>
-    @endforeach
-</ul>
-
-<ul>
-    @foreach($localite as $ville => $acteurs)
-    @if ($ville == 'Lyon')
-    <li>{{$ville}}</li>
-    <ul>
-
-        @foreach($acteurs as $acteur)
-        {{ $acteur }}
-        @endforeach
-
-    </ul>
-    @endif
-    @endforeach
-</ul>
-
-<p> {{$yolo or 'Gutten tag mein freund'}}</p>
-
-
-
-</body>
-
-</html>
+@endsection

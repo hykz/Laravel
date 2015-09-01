@@ -1,17 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create Actors</title>
+@extends('layout')
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-</head>
-<body>
-<div class="container">
-    <div class="content">
-        <div class="title">Create Actors</div>
-    </div>
+@section('title')
+Create Actors
+@endsection
+
+@section('subtitle')
+Create Actors
+@endsection
 
 
-</div>
-</body>
-</html>
+@section('content')
+@endsection
+
+@section('breadscrumb')
+<ul class="breadcrumb breadcrumb-page">
+    <div class="breadcrumb-label text-light-gray">You are here: </div>
+    <li><a href="#">Actors</a></li>
+    <li class="active"><a href="#">Create</a></li>
+</ul>
+@endsection

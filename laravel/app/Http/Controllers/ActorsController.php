@@ -2,24 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Actors as coucou;
+
 class ActorsController extends Controller {
 
 // INDEX ACTORS
     public function index() {
+
         $datas = [
-            'acteurs' => [
-              ['nom' => 'Boyer', 'prenom' => 'Julien', 'age' => 27],
-              ['nom' => 'Cyka', 'prenom' => 'Riri', 'age' => 18],
-              ['nom' => 'Suka', 'prenom' => 'Fifi', 'age' => 35],
-              ['nom' => 'Blat', 'prenom' => 'Loulou', 'age' => 43]
-            ],
-            'title' => 'Liste des Acteurs',
-            'noms' => ['Julien','Matthieu','Aurelien','Thais','Marjorie','Daniel'],
-            'ages' => [18,23,35,45,65],
-            'localite' =>
-            ['Paris' => ['Jessy','Marjo','Daniel'],
-            'Lyon' => ['Thais','Julien','Matthieu']
-            ]
+           "actors" => coucou::All()
         ];
 
         return view('Pages/Actors/index', $datas);

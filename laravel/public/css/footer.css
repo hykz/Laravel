@@ -1,0 +1,11 @@
+.footer {
+	position: absolute;
+	background-color: #23272D;
+	bottom: -8em;
+    text-align: center;
+}
+
+#footer-body {
+    width:50%;
+    margin:auto;
+}
