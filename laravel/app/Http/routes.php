@@ -21,7 +21,7 @@ Route::controller('category','CategoryController',array(
     'getUpdate'     => 'category.update',
     'getCreate'     => 'category.create',
     'getDelete'      => 'category.delete',
-    'getRead'       => 'category.Read'
+    'getRead'       => 'category.read'
 ));
 Route::controller('cinema','CinemaController');
 
@@ -51,13 +51,13 @@ Route::get('/index/{ville?}', ['uses' => 'ActorsController@index', 'as' => 'acto
 Route::get('/create', ['uses' => 'ActorsController@create', 'as' => 'actors.create']);
 
 // ROUTE ACTORS CONTROLLER UPDATE
-Route::get('/update/{id}', ['uses' => 'ActorsController@update'])->where('id', '[0-9]+');;
+Route::get('/update/{id}', ['uses' => 'ActorsController@update' , 'as' => 'actors.update'])->where('id', '[0-9]+');;
 
 // ROUTE ACTORS CONTROLLER DELETE
-Route::get('/delete/{id}', ['uses' => 'ActorsController@delete'])->where('id', '[0-9]+');;
+Route::get('/delete/{id}', ['uses' => 'ActorsController@delete', 'as' => 'actors.delete'])->where('id', '[0-9]+');;
 
 // ROUTE ACTORS CONTROLLER READ
-Route::get('/read/{id}', ['uses' => 'ActorsController@read'])->where('id', '[0-9]+');;
+Route::get('/read/{id}', ['uses' => 'ActorsController@read' , 'as' => 'actors.read'])->where('id', '[0-9]+');;
 
 });
 
@@ -72,13 +72,13 @@ Route::get('/index/{ville?}', ['uses' => 'DirectorsController@index', 'as' => 'd
 Route::get('/create', ['uses' => 'DirectorsController@create', 'as' => 'directors.create']);
 
 // ROUTE DIRECTORS CONTROLLER UPDATE
-Route::get('/update/{id}', ['uses' => 'DirectorsController@update'])->where('id', '[0-9]+');
+Route::get('/update/{id}', ['uses' => 'DirectorsController@update', 'as' => 'directors.update'])->where('id', '[0-9]+');
 
 // ROUTE DIRECTORS CONTROLLER DELETE
-Route::get('/delete/{id}', ['uses' => 'DirectorsController@delete'])->where('id', '[0-9]+');;
+Route::get('/delete/{id}', ['uses' => 'DirectorsController@delete', 'as' => 'directors.delete'])->where('id', '[0-9]+');;
 
 // ROUTE DIRECTORS CONTROLLER READ
-Route::get('/read/{id}', ['uses' => 'DirectorsController@read'])->where('id', '[0-9]+');;
+Route::get('/read/{id}', ['uses' => 'DirectorsController@read', 'as' => 'directors.read'])->where('id', '[0-9]+');;
 });
 
 
@@ -87,23 +87,28 @@ Route::get('/read/{id}', ['uses' => 'DirectorsController@read'])->where('id', '[
 Route::group(['prefix' => 'movies'], function() {
 
 // INDEX
-Route::get('/index/{years?}', ['uses' => 'MoviesController@index', 'as' => 'movies.index']);
+Route::get('/index/{val?}', ['uses' => 'MoviesController@index', 'as' => 'movies.index']);
 
 // ROUTE ACTORS CONTROLLER CREATE
-Route::get('/create', ['uses' => 'MoviesController@create']);
+Route::get('/create', ['uses' => 'MoviesController@create', 'as' => 'movies.create']);
 
 // ROUTE ACTORS CONTROLLER UPDATE
-Route::get('/update/{id}', ['uses' => 'MoviesController@update'])->where('id', '[0-9]+');;
+Route::get('/update/{id}', ['uses' => 'MoviesController@update', 'as' => 'movies.update'])->where('id', '[0-9]+');;
 
 // ROUTE ACTORS CONTROLLER DELETE
-Route::get('/delete/{id}', ['uses' => 'MoviesController@delete'])->where('id', '[0-9]+');;
+Route::get('/delete/{id}', ['uses' => 'MoviesController@delete', 'as' => 'movies.delete'])->where('id', '[0-9]+');;
 
 // ROUTE ACTORS CONTROLLER READ
-Route::get('/read/{id}', ['uses' => 'MoviesController@read'])->where('id', '[0-9]+');
+Route::get('/read/{id}', ['uses' => 'MoviesController@read', 'as' => 'movies.read'])->where('id', '[0-9]+');
 
 // ROUTE ACTORS CONTROLLER CREATE
-Route::get('/search/{lan?}/{vis?}/{test?}', ['uses' => 'MoviesController@search', 'as' => 'movies.create'])->where(array('lan' => '(FR|DE|EN)' , 'vis' => '[0-1]', 'time'=> '[0-9]' ));
+Route::get('/search/{lan?}/{vis?}/{test?}', ['uses' => 'MoviesController@search', 'as' => 'movies.search'])->where(array('lan' => '(FR|DE|EN)' , 'vis' => '[0-1]', 'time'=> '[0-9]' ));
 
+// Route COVER + COVERIMG
+    Route::get('/cover/{id}/{cover}', ['uses' => 'MoviesController@cover', 'as' => 'movies.cover']);
+    Route::get('/visible/{id}/{visible}', ['uses' => 'MoviesController@visible', 'as' => 'movies.visible']);
+// Route BTN SEARCH
+    Route::get('/btnsearch/', ['uses' => 'MoviesController@btnsearch', 'as' => 'movies.btnsearch']);
 });
 
 /////////// USER USER ////////////////////////
@@ -111,5 +116,8 @@ Route::get('/search/{lan?}/{vis?}/{test?}', ['uses' => 'MoviesController@search'
 Route::group(['prefix' => 'users'], function() {
 Route::get('/index', ['uses' => 'UsersController@index', 'as' => 'users.index']);
 Route::get('/create', ['uses' => 'UsersController@create', 'as' => 'users.create']);
+Route::get('/delete/{id}', ['uses' => 'UsersController@delete', 'as' => 'users.delete']);
+Route::get('/update{id}', ['uses' => 'UsersController@update', 'as' => 'users.update']);
+Route::get('/read', ['uses' => 'UsersController@read', 'as' => 'users.read']);
 Route::get('/search/{zipcode?}/{city?}/{enable?}', ['uses' => 'UsersController@search', 'as' => 'users.search'])->where(array( 'zipcode' => '[0-9]{5}', 'enable'=> '0|1','city' => '[a-zA-Z-]+' ));
 });

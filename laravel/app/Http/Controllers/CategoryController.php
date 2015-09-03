@@ -1,13 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Model\Category as catdb;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 class CategoryController extends Controller {
 
 // INDEX ACTORS
     public function getIndex() {
 
-        return view('Pages/Category/index');
+        $datas = [
+            "categories" => catdb::all()
+        ];
+        return view('Pages/Category/index', $datas);
     }
 
 // CREATE ACTORS
@@ -22,7 +27,10 @@ class CategoryController extends Controller {
 
 // DELETE ACTORS
     public function getDelete($id) {
-        return view('Pages/Category/delete', ['id' => $id]);
+        $categorie = catdb::find($id);
+        $categorie->delete();
+        Session::flash('success', "La catégorie {$categorie->title} a bien été supprimé. ");
+        return Redirect::route('category.index');
     }
 
 // READ ACTORS

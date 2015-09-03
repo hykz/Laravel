@@ -329,8 +329,7 @@ Use search to find needed section.
             <h1 class="col-xs-12 col-sm-4 text-center text-left-sm"><i class="fa fa-dashboard page-header-icon"></i>&nbsp;&nbsp;@yield('subtitle')</h1>
         </div>
     </div> <!-- / .page-header -->
-
-
+        @include('Partials/_flashdatas')
     @yield('content')
 
 </div> <!-- / #content-wrapper -->

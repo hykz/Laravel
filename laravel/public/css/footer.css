@@ -1,11 +1,23 @@
 .footer {
-	position: absolute;
+	position: fixed;
 	background-color: #23272D;
-	bottom: -8em;
+	bottom: 0px;
     text-align: center;
 }
 
 #footer-body {
     width:50%;
     margin:auto;
+}
+
+
+tr {
+    display:table-row;
+    max-height: 30%;
+}
+
+
+
+td {
+    max-height: 30%;
 }

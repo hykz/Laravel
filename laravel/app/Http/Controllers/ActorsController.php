@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Actors as coucou;
+use App\Model\Actors as actorsdb;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class ActorsController extends Controller {
 
@@ -10,7 +12,7 @@ class ActorsController extends Controller {
     public function index() {
 
         $datas = [
-           "actors" => coucou::All()
+           "actors" => actorsdb::All()
         ];
 
         return view('Pages/Actors/index', $datas);
@@ -28,12 +30,21 @@ class ActorsController extends Controller {
 
 // DELETE ACTORS
     public function delete($id) {
-        return view('Pages/Actors/delete', ['id' => $id]);
+        $actor = actorsdb::find($id);
+        $actor->delete();
+
+        Session::flash('success', "L'acteur {$actor->firstname} {$actor->lastname} a bien été supprimé.");
+        
+        return Redirect::route('actors.index');
     }
 
 // READ ACTORS
-    public function read($id) {
-        return view('Pages/Actors/read', ['id' => $id]);
+    public function read($id = null){
+        $datas = [
+            'actor' => actorsdb::find($id) /*trouver un acteur par son id*/
+        ];
+        return view('Pages/Actors/read', $datas);
     }
+
 
 }
