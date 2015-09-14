@@ -334,7 +334,7 @@ Use search to find needed section.
 
 </div> <!-- / #content-wrapper -->
 <div id="main-menu-bg"></div>
-@include('Partials/_footermenu')
+    @include('Partials/_footermenu')
 </div> <!-- / #main-wrapper -->
 
 @section('js')
@@ -350,6 +350,8 @@ Use search to find needed section.
 <!-- Pixel Admin's javascripts -->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/pixel-admin.min.js') }}"></script>
+<script src="{{ asset('js/ajax.js') }}"></script>
+
 
 <script type="text/javascript">
     init.push(function () {

@@ -10,5 +10,12 @@ class Movies extends Model {
 
     public $timestamps = false;
 
+    public function categories()
+    {
+
+            return $this->belongsTo('App\Model\Category');
+
+    }
+
 
 }

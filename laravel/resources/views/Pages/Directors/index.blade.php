@@ -36,7 +36,7 @@ Index Directors
 
                     @foreach($directors as $director)
                         <tr>
-                            <td style="max-width: 50%"><a href="{{ route('directors.read', [ 'id' => $director->id ] ) }}"><img style="width: 100%; height: 100px;" src="{{ $director->image }}" alt=""></a></td>
+                            <td style="max-width: 50%"><a href="{{ route('directors.read', [ 'id' => $director->id ] ) }}"><img style="height: 100px;" src="{{ $director->image }}" alt=""></a></td>
                             <td>{{ $director->firstname }} {{ $director->lastname }}</td>
                             <td>{{ $director->dob }}</td>
                             <td>{{ $director->city }}</td>

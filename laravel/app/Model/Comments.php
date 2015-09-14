@@ -4,9 +4,9 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Users extends Model {
+class Comments extends Model {
 
-    protected $table = 'user';
+    protected $table = 'comments';
 
     public $timestamps = false;
 

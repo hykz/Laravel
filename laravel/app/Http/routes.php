@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', ['uses' => 'IndexController@index', 'as' => 'home']);
 
 ///// ROUTE CONTROLLER ///////
 Route::controller('category','CategoryController',array(
@@ -21,8 +20,10 @@ Route::controller('category','CategoryController',array(
     'getUpdate'     => 'category.update',
     'getCreate'     => 'category.create',
     'getDelete'      => 'category.delete',
-    'getRead'       => 'category.read'
+    'getRead'       => 'category.read',
+    'postPost' => 'category.post'
 ));
+
 Route::controller('cinema','CinemaController');
 
 
@@ -36,7 +37,7 @@ Route::get('/faq', ['uses' => 'PagesController@faq', 'as' => 'faq']);
 Route::get('/mentions', ['uses' => 'PagesController@mentions', 'as' => 'mentions']);
 
 // ROUTE INDEX //
-Route::get('/index', ['uses' => 'PagesController@index', 'as' => 'home']);
+Route::get('/index', ['uses' => 'IndexController@index', 'as' => 'home']);
 
 // ROUTE CONCECPT
 Route::get('/concept', ['uses' => 'PagesController@concept', 'as' => 'concept']);
@@ -49,6 +50,7 @@ Route::get('/index/{ville?}', ['uses' => 'ActorsController@index', 'as' => 'acto
 
 // ROUTE ACTORS CONTROLLER CREATE
 Route::get('/create', ['uses' => 'ActorsController@create', 'as' => 'actors.create']);
+    Route::post('/post', ['uses' => 'ActorsController@post', 'as' => 'actors.post']);
 
 // ROUTE ACTORS CONTROLLER UPDATE
 Route::get('/update/{id}', ['uses' => 'ActorsController@update' , 'as' => 'actors.update'])->where('id', '[0-9]+');;
@@ -70,7 +72,7 @@ Route::get('/index/{ville?}', ['uses' => 'DirectorsController@index', 'as' => 'd
 
 // ROUTE DIRECTORS CONTROLLER CREATE
 Route::get('/create', ['uses' => 'DirectorsController@create', 'as' => 'directors.create']);
-
+    Route::post('/post', ['uses' => 'DirectorsController@post', 'as' => 'directors.post']);
 // ROUTE DIRECTORS CONTROLLER UPDATE
 Route::get('/update/{id}', ['uses' => 'DirectorsController@update', 'as' => 'directors.update'])->where('id', '[0-9]+');
 
@@ -89,8 +91,13 @@ Route::group(['prefix' => 'movies'], function() {
 // INDEX
 Route::get('/index/{val?}', ['uses' => 'MoviesController@index', 'as' => 'movies.index']);
 
+// ROUTE DASHBOARD ADD MOVIE
+    Route::post('/postfast', ['uses' => 'MoviesController@postfast', 'as' => 'movies.postfast']);
+
+
 // ROUTE ACTORS CONTROLLER CREATE
 Route::get('/create', ['uses' => 'MoviesController@create', 'as' => 'movies.create']);
+
 
 // ROUTE ACTORS CONTROLLER UPDATE
 Route::get('/update/{id}', ['uses' => 'MoviesController@update', 'as' => 'movies.update'])->where('id', '[0-9]+');;
@@ -103,12 +110,15 @@ Route::get('/read/{id}', ['uses' => 'MoviesController@read', 'as' => 'movies.rea
 
 // ROUTE ACTORS CONTROLLER CREATE
 Route::get('/search/{lan?}/{vis?}/{test?}', ['uses' => 'MoviesController@search', 'as' => 'movies.search'])->where(array('lan' => '(FR|DE|EN)' , 'vis' => '[0-1]', 'time'=> '[0-9]' ));
-
+    Route::post('/post', ['uses' => 'MoviesController@post', 'as' => 'movies.post']);
 // Route COVER + COVERIMG
     Route::get('/cover/{id}/{cover}', ['uses' => 'MoviesController@cover', 'as' => 'movies.cover']);
     Route::get('/visible/{id}/{visible}', ['uses' => 'MoviesController@visible', 'as' => 'movies.visible']);
-// Route BTN SEARCH
-    Route::get('/btnsearch/', ['uses' => 'MoviesController@btnsearch', 'as' => 'movies.btnsearch']);
+// Route SELECT ACTION ALL
+    Route::get('/select/', ['uses' => 'MoviesController@select', 'as' => 'movies.select']);
+    // CAT -> MOVIES
+    Route::get('/', ['uses' => 'MoviesController@category', 'as' => 'movies.category']);
+
 });
 
 /////////// USER USER ////////////////////////
@@ -120,4 +130,14 @@ Route::get('/delete/{id}', ['uses' => 'UsersController@delete', 'as' => 'users.d
 Route::get('/update{id}', ['uses' => 'UsersController@update', 'as' => 'users.update']);
 Route::get('/read', ['uses' => 'UsersController@read', 'as' => 'users.read']);
 Route::get('/search/{zipcode?}/{city?}/{enable?}', ['uses' => 'UsersController@search', 'as' => 'users.search'])->where(array( 'zipcode' => '[0-9]{5}', 'enable'=> '0|1','city' => '[a-zA-Z-]+' ));
+
+});
+
+// COMMENTS COMMENTS COMMENTS //
+Route::group(['prefix' => 'comments'], function() {
+// INDEX
+    Route::get('/index/', ['uses' => 'CommentsController@getIndex', 'as' => 'comments.index']);
+    // Route SELECT ACTION ALL
+    Route::get('/select/', ['uses' => 'CommentsController@select', 'as' => 'comments.select']);
+
 });

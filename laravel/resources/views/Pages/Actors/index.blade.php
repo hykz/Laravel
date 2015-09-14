@@ -37,7 +37,7 @@ Index Actors
 
 @foreach($actors as $actor)
     <tr>
-        <td style="max-width: 50%"><a href="{{ route('actors.read', [ 'id' => $actor->id ] ) }}"><img style="width: 100%; height: 100px;" src="{{ $actor->image }}" alt=""></a></td>
+        <td style="max-width: 50%"><a href="{{ route('actors.read', [ 'id' => $actor->id ] ) }}"><img style="height: 100px;" src="{{ $actor->image }}" alt=""></a></td>
         <td>{{ $actor->firstname }} {{ $actor->lastname }}</td>
         <td>{{ $actor->dob }}</td>
         <td>{{ $actor->city }}</td>

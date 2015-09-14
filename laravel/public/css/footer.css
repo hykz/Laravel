@@ -1,7 +1,5 @@
-.footer {
-	position: fixed;
+footer {
 	background-color: #23272D;
-	bottom: 0px;
     text-align: center;
 }
 
@@ -20,4 +18,8 @@ tr {
 
 td {
     max-height: 30%;
+}
+
+.panel-heading-controls {
+    margin: 0;
 }
