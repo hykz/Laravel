@@ -11,6 +11,29 @@ var elixir = require('laravel-elixir');
  |
  */
 
+
+
 elixir(function(mix) {
-    mix.sass('app.scss');
+
+ mix.copy('resources/img/**', 'public/images');
+
+ // Fichier app.js a prendre en compte
+ mix.scripts([
+  "app.js",
+  "main.js",
+  "ajax.js",
+  "realtime.js"
+ ]);
+
+ mix.scripts([
+     "gmap.js"
+ ], 'public/js/gmap.js');
+
+ mix.styles([
+  "main.css",
+  "index.css"
+ ]).stylesIn("public/css");
+
+
+ mix.sass('footer.sass').stylesIn("public/css");
 });

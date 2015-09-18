@@ -46,6 +46,7 @@ Use search to find needed section.
     <link href="{{ asset('css/rtl.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/themes.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet" type="text/css">
+
     @show
 
     <!--[if lt IE 9]>
@@ -350,7 +351,16 @@ Use search to find needed section.
 <!-- Pixel Admin's javascripts -->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/pixel-admin.min.js') }}"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="http://code.highcharts.com/modules/data.js"></script>
+<script src="http://code.highcharts.com/modules/drilldown.js"></script>
 <script src="{{ asset('js/ajax.js') }}"></script>
+<script src="{{ asset('js/realtime.js') }}"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="{{ asset('js/gmap.js') }}"></script>
+<script src="{{ asset('js/graph.js') }}"></script>
+<script src="{{ asset('js/graphpro.js') }}"></script>
 
 
 <script type="text/javascript">

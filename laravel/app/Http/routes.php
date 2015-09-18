@@ -14,6 +14,13 @@
 
 Route::get('/', ['uses' => 'IndexController@index', 'as' => 'home']);
 
+Route::get('/advanced', ['uses' => 'AdvancedController@index', 'as' => 'advanced']);
+
+Route::get('/professional', ['uses' => 'ProfessionalController@index', 'as' => 'professional']);
+
+// Route SELECT ACTION ALL
+Route::get('/taskaction/', ['uses' => 'AdvancedController@taskaction', 'as' => 'task.action']);
+
 ///// ROUTE CONTROLLER ///////
 Route::controller('category','CategoryController',array(
     'getIndex'     => 'category.index',
@@ -25,6 +32,9 @@ Route::controller('category','CategoryController',array(
 ));
 
 Route::controller('cinema','CinemaController');
+
+Route::get('/movies-realtime', ['uses' => 'IndexController@realtime',
+    'as' => 'index.realtime']);
 
 
 // ROUTE PAGE CONTACT//

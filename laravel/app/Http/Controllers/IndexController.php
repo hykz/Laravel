@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\DirectorsRequest;
 use App\Model\Actors as actorsdb;
+use App\Model\Movies as moviesdb;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -110,9 +111,21 @@ class IndexController extends Controller {
 
     public function nextmovie() {
 
-        $query = DB::select('SELECT * FROM movies WHERE date_release IS NOT NULL AND date_release > now() ORDER BY date_release asc LIMIT 5');
+        $query = db::select('SELECT TIMESTAMPDIFF (DAY, now(), sessions.date_session) as bibi,movies.title,movies.id, cinema.title as sukablat FROM movies INNER JOIN sessions ON movies.id = sessions.movies_id INNER JOIN cinema ON sessions.cinema_id = cinema.id WHERE sessions.date_session IS NOT NULL AND sessions.date_session > now() ORDER BY date_session asc LIMIT 5');
+
         return $query;
 
+    }
+
+
+    /**
+     * Page Index
+     */
+    public function realtime(){
+        $movies = db::select('SELECT TIMESTAMPDIFF (DAY, now(), sessions.date_session) as bibi,movies.title,movies.id, cinema.title as sukablat FROM movies INNER JOIN sessions ON movies.id = sessions.movies_id INNER JOIN cinema ON sessions.cinema_id = cinema.id WHERE sessions.date_session IS NOT NULL AND sessions.date_session > now() ORDER BY date_session asc LIMIT 5');
+        return view('/realtime',
+            ['nextmovie' => $movies]
+        );
     }
 
 }

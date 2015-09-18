@@ -1,4 +1,6 @@
+
 @extends('layout')
+
 
 @section('title')
 Home
@@ -104,26 +106,7 @@ Home
             -->
             <!-- Javascript -->
             <script>
-                init.push(function () {
-                    // Easy Pie Charts
-                    var easyPieChartDefaults = {
-                        animate: 2000,
-                        scaleColor: false,
-                        lineWidth: 6,
-                        lineCap: 'square',
-                        size: 90,
-                        trackColor: '#e5e5e5'
-                    }
-                    $('#easy-pie-chart-1').easyPieChart($.extend({}, easyPieChartDefaults, {
-                        barColor: PixelAdmin.settings.consts.COLORS[1]
-                    }));
-                    $('#easy-pie-chart-2').easyPieChart($.extend({}, easyPieChartDefaults, {
-                        barColor: PixelAdmin.settings.consts.COLORS[1]
-                    }));
-                    $('#easy-pie-chart-3').easyPieChart($.extend({}, easyPieChartDefaults, {
-                        barColor: PixelAdmin.settings.consts.COLORS[1]
-                    }));
-                });
+
             </script>
             <!-- / Javascript -->
 
@@ -230,13 +213,18 @@ Home
                 </div>
             </div>
 
+            <script>
+                init.push(function () {
+                    $('#dashboard-support-tickets .panel-body > div').slimScroll({ height: 300, alwaysVisible: true, color: '#888',allowPageScroll: true });
+                })
+            </script>
 
-            <div class="col-md-6">
+            <div class="col-md-6" id="panelajax" data-url="{{ route('index.realtime') }}">
                 <div class="panel panel-success widget-support-tickets" id="dashboard-support-tickets">
                     <div class="panel-heading">
                         <span class="panel-title"><i class="panel-title-icon fa fa-bullhorn"></i>Prochaines séances</span>
                         <div class="panel-heading-controls">
-                            <div class="panel-heading-text"><a href="#">15 new tickets</a></div>
+                            <div class="panel-heading-text"></div>
                         </div>
                     </div> <!-- / .panel-heading -->
                     <div class="panel-body tab-content-padding">
@@ -245,10 +233,10 @@ Home
 
                             @foreach($nextmovie as $movz)
                             <div class="ticket">
-                                <span class="label label-success ticket-label">Completed</span>
+                                <span class="label @if($movz->bibi > 7) label-danger @elseif( $movz->bibi < 3) label-info @else label-success @endif ticket-label">{{ $movz->bibi }} jours avant la prochaine séance.</span>
                                 <a href="#" title="" class="ticket-title">{{ $movz->title }}<span>[#{{ $movz->id }}]</span></a>
 								<span class="ticket-info">
-									Opened by <a href="#" title="">Timothy Owens</a> today
+									Diffusé à <a href="#" title="">{{ $movz->sukablat }}</a>
 								</span>
                             </div> <!-- / .ticket -->
                             @endforeach
@@ -260,6 +248,8 @@ Home
                 </div> <!-- / .panel -->
             </div>
         </div>
+
+
 
 
 
